@@ -118,20 +118,19 @@ class KittiMetric(BaseMetric):
                         'truncated': [],
                         'occluded': [],
                         'alpha': [],
-                        'bbox': np.zeros([0, 4]),
-                        'dimensions': np.zeros([0, 3]),
-                        'location': np.zeros([0, 3]),
+                        'bbox': [],
+                        'dimensions': [],
+                        'location': [],
                         'rotation_y': [],
                         'score': []
                     }
+                    valid_num = 0
                     for instance in annos['instances']:
                         label = instance['bbox_label']
                         if (label == -1):
                             continue
                         else:
-                            kitti_annos['bbox'] = []
-                            kitti_annos['dimensions'] = []
-                            kitti_annos['location'] = []
+                            valid_num += 1
                         kitti_annos['name'].append(label2cat[label])
                         kitti_annos['truncated'].append(instance['truncated'])
                         kitti_annos['occluded'].append(instance['occluded'])
@@ -143,8 +142,21 @@ class KittiMetric(BaseMetric):
                         kitti_annos['rotation_y'].append(
                             instance['bbox_3d'][6])
                         kitti_annos['score'].append(instance['score'])
-                    for name in kitti_annos:
-                        kitti_annos[name] = np.array(kitti_annos[name])
+                    if (valid_num == 0):
+                        kitti_annos = {
+                            'name': np.array([]),
+                            'truncated': np.array([]),
+                            'occluded': np.array([]),
+                            'alpha': np.array([]),
+                            'bbox': np.zeros([0, 4]),
+                            'dimensions': np.zeros([0, 3]),
+                            'location': np.zeros([0, 3]),
+                            'rotation_y': np.array([]),
+                            'score': np.array([]),
+                        }
+                    else:
+                        for name in kitti_annos:
+                            kitti_annos[name] = np.array(kitti_anos[name])
                 data_annos[i]['kitti_annos'] = kitti_annos
         return data_annos
 
