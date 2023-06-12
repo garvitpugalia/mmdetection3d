@@ -156,7 +156,7 @@ class KittiMetric(BaseMetric):
                         }
                     else:
                         for name in kitti_annos:
-                            kitti_annos[name] = np.array(kitti_anos[name])
+                            kitti_annos[name] = np.array(kitti_annos[name])
                 data_annos[i]['kitti_annos'] = kitti_annos
         return data_annos
 
