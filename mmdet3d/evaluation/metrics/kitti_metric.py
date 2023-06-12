@@ -118,14 +118,20 @@ class KittiMetric(BaseMetric):
                         'truncated': [],
                         'occluded': [],
                         'alpha': [],
-                        'bbox': [],
-                        'location': [],
-                        'dimensions': [],
+                        'bbox': np.zeros([0, 4]),
+                        'dimensions': np.zeros([0, 3]),
+                        'location': np.zeros([0, 3]),
                         'rotation_y': [],
                         'score': []
                     }
                     for instance in annos['instances']:
                         label = instance['bbox_label']
+                        if (label == -1):
+                            continue
+                        else:
+                            kitti_annos['bbox'] = []
+                            kitti_annos['dimensions'] = []
+                            kitti_annos['location'] = []
                         kitti_annos['name'].append(label2cat[label])
                         kitti_annos['truncated'].append(instance['truncated'])
                         kitti_annos['occluded'].append(instance['occluded'])
