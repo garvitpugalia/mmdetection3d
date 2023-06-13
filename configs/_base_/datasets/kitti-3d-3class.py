@@ -123,7 +123,7 @@ train_dataloader = dict(
             backend_args=backend_args)))
 val_dataloader = dict(
     batch_size=2,
-    num_workers=1,
+    num_workers=2,
     persistent_workers=True,
     drop_last=False,
     sampler=dict(type='DefaultSampler', shuffle=False),
@@ -140,7 +140,7 @@ val_dataloader = dict(
         backend_args=backend_args))
 test_dataloader = dict(
     batch_size=2,
-    num_workers=1,
+    num_workers=2,
     persistent_workers=True,
     drop_last=False,
     sampler=dict(type='DefaultSampler', shuffle=False),
