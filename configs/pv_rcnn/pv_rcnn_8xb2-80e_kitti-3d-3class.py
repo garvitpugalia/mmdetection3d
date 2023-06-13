@@ -320,7 +320,7 @@ model = dict(
             score_thr=0.1)))
 train_dataloader = dict(
     batch_size=2,
-    num_workers=2,
+    num_workers=4,
     dataset=dict(dataset=dict(pipeline=train_pipeline, metainfo=metainfo)))
 test_dataloader = dict(dataset=dict(pipeline=test_pipeline, metainfo=metainfo))
 eval_dataloader = dict(dataset=dict(pipeline=test_pipeline, metainfo=metainfo))
