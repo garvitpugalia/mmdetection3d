@@ -97,11 +97,6 @@ lr = 0.01  # max learning rate
 optim_wrapper = dict(optimizer=dict(lr=lr, betas=(0.95, 0.85)))
 train_cfg = dict(by_epoch=True, max_epochs=40, val_interval=2)
 
-# Default setting for scaling LR automatically
-#   - `enable` means enable scaling LR automatically
-#       or not by default.
-#   - `base_batch_size` = (8 GPUs) x (2 samples per GPU).
-auto_scale_lr = dict(enable=False, base_batch_size=16)
 param_scheduler = [
     # learning rate scheduler
     # During the first 35 epochs, learning rate increases from 0 to lr * 10
