@@ -84,7 +84,7 @@ test_pipeline = [
     dict(type='Pack3DDetInputs', keys=['points'])
 ]
 train_dataloader = dict(
-    batch_size=2,
+    batch_size=8,
     num_workers=2,
     dataset=dict(
         type='RepeatDataset',
