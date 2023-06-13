@@ -93,9 +93,9 @@ train_dataloader = dict(
 test_dataloader = dict(dataset=dict(pipeline=test_pipeline, metainfo=metainfo))
 val_dataloader = dict(dataset=dict(pipeline=test_pipeline, metainfo=metainfo))
 
-lr = 0.001  # max learning rate
+lr = 0.01  # max learning rate
 optim_wrapper = dict(optimizer=dict(lr=lr, betas=(0.95, 0.85)))
-train_cfg = dict(by_epoch=True, max_epochs=80, val_interval=2)
+train_cfg = dict(by_epoch=True, max_epochs=40, val_interval=2)
 
 # Default setting for scaling LR automatically
 #   - `enable` means enable scaling LR automatically
