@@ -6,7 +6,7 @@ _base_ = [
 voxel_size = [0.05, 0.05, 0.1]
 point_cloud_range = [0, -40, -3, 70.4, 40, 1]
 
-data_root = 'data/kitti/'
+data_root = '/content/drive/MyDrive/188/kitti/'
 class_names = ['Pedestrian', 'Cyclist', 'Car']
 metainfo = dict(CLASSES=class_names)
 backend_args = None
@@ -319,12 +319,12 @@ model = dict(
             nms_thr=0.1,
             score_thr=0.1)))
 train_dataloader = dict(
-    batch_size=2,
+    batch_size=16,
     num_workers=2,
     dataset=dict(dataset=dict(pipeline=train_pipeline, metainfo=metainfo)))
 test_dataloader = dict(dataset=dict(pipeline=test_pipeline, metainfo=metainfo))
 eval_dataloader = dict(dataset=dict(pipeline=test_pipeline, metainfo=metainfo))
-lr = 0.001
+lr = 0.01
 optim_wrapper = dict(optimizer=dict(lr=lr))
 param_scheduler = [
     # learning rate scheduler
