@@ -5,7 +5,7 @@ _base_ = [
 
 # dataset settings
 dataset_type = 'KittiDataset'
-data_root = 'data/kitti/'
+data_root = '/content/drive/MyDrive/188/kitti/'
 class_names = ['Pedestrian', 'Cyclist', 'Car']
 metainfo = dict(classes=class_names)
 point_cloud_range = [0, -40, -3, 70.4, 40, 1]
