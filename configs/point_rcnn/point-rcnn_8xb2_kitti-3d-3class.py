@@ -96,6 +96,7 @@ val_dataloader = dict(dataset=dict(pipeline=test_pipeline, metainfo=metainfo))
 lr = 0.01  # max learning rate
 optim_wrapper = dict(optimizer=dict(lr=lr, betas=(0.95, 0.85)))
 train_cfg = dict(by_epoch=True, max_epochs=40, val_interval=2)
+auto_scale_lr = dict(enable=False, base_batch_size=16)
 
 param_scheduler = [
     # learning rate scheduler
