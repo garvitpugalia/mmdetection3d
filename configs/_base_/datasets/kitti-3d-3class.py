@@ -147,8 +147,8 @@ test_dataloader = dict(
     dataset=dict(
         type=dataset_type,
         data_root=data_root,
-        data_prefix=dict(pts='training/velodyne_reduced'),
-        ann_file='kitti_infos_val.pkl',
+        data_prefix=dict(pts='testing/velodyne_reduced'),
+        ann_file='kitti_infos_test.pkl',
         pipeline=test_pipeline,
         modality=input_modality,
         test_mode=True,
@@ -160,7 +160,11 @@ val_evaluator = dict(
     ann_file=data_root + 'kitti_infos_val.pkl',
     metric='bbox',
     backend_args=backend_args)
-test_evaluator = val_evaluator
+test_evaluator = dict(
+    type='KittiMetric',
+    ann_file=data_root + 'kitti_infos_test.pkl',
+    metric='bbox',
+    backend_args=backend_args)
 
 vis_backends = [dict(type='LocalVisBackend')]
 visualizer = dict(
